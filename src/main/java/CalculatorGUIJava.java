@@ -7,8 +7,8 @@ public class CalculatorGUIJava {
 
     public CalculatorGUIJava() {
         // button constants
-        Dimension BUTTONDIMENSION = new Dimension(75, 50);
-        Font BUTTONFONT = new Font("Courier New", Font.BOLD, 24);
+        Dimension BUTTON_DIMENSION = new Dimension(75, 50);
+        Font BUTTON_FONT = new Font("Courier New", Font.BOLD, 24);
 
         // display field styling
         displayField.setFont(new Font("Consolas", Font.PLAIN, 25));
@@ -22,11 +22,11 @@ public class CalculatorGUIJava {
 
 
         //operation key styling
-        setButtonStyle(getButtons(operationPanel), BUTTONFONT, BUTTONDIMENSION);
+        setButtonStyle(getButtons(operationPanel), BUTTON_FONT, BUTTON_DIMENSION);
         operationPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
         //keypad key styling
-        setButtonStyle(getButtons(keypadPanel), BUTTONFONT, BUTTONDIMENSION);
+        setButtonStyle(getButtons(keypadPanel), BUTTON_FONT, BUTTON_DIMENSION);
         keypadPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 20));
 
     }
