@@ -6,17 +6,44 @@ import java.util.ArrayList;
 public class CalculatorGUIJava {
 
     public CalculatorGUIJava() {
+        // button constants
+        Dimension BUTTONDIMENSION = new Dimension(75, 50);
+        Font BUTTONFONT = new Font("Courier New", Font.BOLD, 24);
+
         // display field styling
-        displayField.setFont(new Font("serif", Font.PLAIN, 25));
+        displayField.setFont(new Font("Consolas", Font.PLAIN, 25));
         displayField.setHorizontalAlignment(JTextField.TRAILING);
+        displayField.setEditable(false);
+        displayField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         // panel padding
-        Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+        Border padding = BorderFactory.createEmptyBorder(12, 12, 12, 12);
         panel1.setBorder(padding);
 
+
         //operation key styling
+        setButtonStyle(getButtons(operationPanel), BUTTONFONT, BUTTONDIMENSION);
+        operationPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+
+        //keypad key styling
+        setButtonStyle(getButtons(keypadPanel), BUTTONFONT, BUTTONDIMENSION);
+        keypadPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 20));
+
+    }
+
+    // helper function for styling buttons
+    public static void setButtonStyle(ArrayList<JButton> buttons, Font font, Dimension dimension) {
+        buttons.forEach(button -> {
+            button.setFont(font);
+            button.setPreferredSize(dimension);
+            button.setMaximumSize(dimension);
+            button.setMinimumSize(dimension);
+        });
+    }
+
+    public static ArrayList<JButton> getButtons(JPanel panel) {
         ArrayList<JButton> buttons = new ArrayList<>();
-        Component[] components = operationPanel.getComponents();
+        Component[] components = panel.getComponents();
 
         for (Component component : components) {
             if (component instanceof JButton) {
@@ -24,19 +51,14 @@ public class CalculatorGUIJava {
             }
         }
 
-        buttons.forEach(button -> {
-            button.setPreferredSize(new Dimension(75, 50));
-            button.setMaximumSize(new Dimension(75, 50));
-            button.setMinimumSize(new Dimension(75, 50));
-        });
-
+        return buttons;
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("CalculatorGUIJava");
         frame.setContentPane(new CalculatorGUIJava().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(375, 375));
+        frame.setSize(new Dimension(375, 445));
         frame.setVisible(true);
     }
 
