@@ -34,12 +34,12 @@ public class CalculatorGUIJava {
         clearButton.setMargin(new Insets(10, 10, 10, 10));
 
 
+        // add event listeners to all buttons except clear and equals, to update displayField
+        ArrayList<JButton> buttonLists = new ArrayList<>( getButtons(keypadPanel) );
+        buttonLists.addAll( getButtons(operationPanel) );
 
-        // add event listeners to the keypad buttons, to displayField
-        getButtons(keypadPanel).forEach(button -> {
-
-            // check if the button is not the clearButton
-            if (button != clearButton) {
+        buttonLists.forEach(button -> {
+            if (button != clearButton && button != equalsButton) {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
@@ -49,7 +49,6 @@ public class CalculatorGUIJava {
                 });
             }
         });
-
 
         clearButton.addActionListener(new ActionListener() {
             @Override
