@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CalculatorGUIJava {
@@ -12,7 +14,7 @@ public class CalculatorGUIJava {
 
         // display field styling
         displayField.setFont(new Font("Consolas", Font.PLAIN, 25));
-        displayField.setHorizontalAlignment(JTextField.TRAILING);
+        displayField.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         displayField.setEditable(false);
         displayField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -28,12 +30,38 @@ public class CalculatorGUIJava {
         //keypad key styling
         setButtonStyle(getButtons(keypadPanel), BUTTON_FONT, BUTTON_DIMENSION);
         keypadPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 20));
+        clearButton.setAlignmentX(10.0f);
+        clearButton.setMargin(new Insets(10, 10, 10, 10));
 
+
+
+        // add event listeners to the keypad buttons, to displayField
+        getButtons(keypadPanel).forEach(button -> {
+
+            // check if the button is not the clearButton
+            if (button != clearButton) {
+                button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent actionEvent) {
+                        String text = displayField.getText();
+                        displayField.setText(text + button.getText());
+                    }
+                });
+            }
+        });
+
+
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                displayField.setText("");
+            }
+        });
     }
 
     // helper function for styling buttons
     public static void setButtonStyle(ArrayList<JButton> buttons, Font font, Dimension dimension) {
-        buttons.forEach(button -> {
+        buttons.stream().filter(button -> !button.getText().equals("Clear")).forEach(button -> {
             button.setFont(font);
             button.setPreferredSize(dimension);
             button.setMaximumSize(dimension);
@@ -58,7 +86,7 @@ public class CalculatorGUIJava {
         JFrame frame = new JFrame("CalculatorGUIJava");
         frame.setContentPane(new CalculatorGUIJava().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(new Dimension(375, 445));
+        frame.setSize(new Dimension(400, 445));
         frame.setVisible(true);
     }
 
@@ -78,8 +106,9 @@ public class CalculatorGUIJava {
     private JButton minusButton;
     private JButton multiplyButton;
     private JButton equalsButton;
-    private JTextField displayField;
+    private JTextArea displayField;
     private JPanel operationPanel;
     private JPanel displayPanel;
     private JPanel keypadPanel;
+    private JButton clearButton;
 }
