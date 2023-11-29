@@ -3,6 +3,8 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class CalculatorGUIJava {
@@ -14,7 +16,6 @@ public class CalculatorGUIJava {
 
         // display field styling
         displayField.setFont(new Font("Consolas", Font.PLAIN, 25));
-        displayField.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         displayField.setEditable(false);
         displayField.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -35,18 +36,14 @@ public class CalculatorGUIJava {
 
 
         // add event listeners to all buttons except clear and equals, to update displayField
-        ArrayList<JButton> buttonLists = new ArrayList<>( getButtons(keypadPanel) );
-        buttonLists.addAll( getButtons(operationPanel) );
+        ArrayList<JButton> buttons = new ArrayList<>( getButtons(keypadPanel) );
+        buttons.addAll( getButtons(operationPanel) );
 
-        buttonLists.forEach(button -> {
-            if (button != clearButton && button != equalsButton) {
-                button.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        String text = displayField.getText();
-                        displayField.setText(text + button.getText());
-                    }
-                });
+        buttons.forEach(button -> {
+            if ( isButtonAnOperator(button) ) {
+                attachOperatorListener(button);
+            } else {
+                attachNumberListener(button);
             }
         });
 
@@ -59,7 +56,7 @@ public class CalculatorGUIJava {
     }
 
     // helper function for styling buttons
-    public static void setButtonStyle(ArrayList<JButton> buttons, Font font, Dimension dimension) {
+    public void setButtonStyle(ArrayList<JButton> buttons, Font font, Dimension dimension) {
         buttons.stream().filter(button -> !button.getText().equals("Clear")).forEach(button -> {
             button.setFont(font);
             button.setPreferredSize(dimension);
@@ -68,7 +65,7 @@ public class CalculatorGUIJava {
         });
     }
 
-    public static ArrayList<JButton> getButtons(JPanel panel) {
+    public ArrayList<JButton> getButtons(JPanel panel) {
         ArrayList<JButton> buttons = new ArrayList<>();
         Component[] components = panel.getComponents();
 
@@ -80,6 +77,30 @@ public class CalculatorGUIJava {
 
         return buttons;
     }
+
+    public void attachOperatorListener(JButton button) {
+        button.addActionListener(e -> {
+            String text = displayField.getText();
+            displayField.setText(text + " " + button.getText() + " ");
+        });
+    }
+
+    public void attachNumberListener(JButton button) {
+        button.addActionListener(e -> {
+            if (button != clearButton && button != equalsButton) {
+                String text = displayField.getText();
+                displayField.setText(text + button.getText());
+            }
+        });
+    }
+
+    public boolean isButtonAnOperator(JButton button) {
+        return button == plusButton
+                || button == minusButton
+                || button == multiplyButton
+                || button == divideButton;
+    }
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("CalculatorGUIJava");
