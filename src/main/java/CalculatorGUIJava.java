@@ -123,6 +123,14 @@ public class CalculatorGUIJava {
         button.addActionListener(e -> {
             if (button != clearButton && button != equalsButton) {
                 String text = displayField.getText();
+
+                // handling divide by zero here
+                if (button.getText().equals("0")
+                        && !calculator.getOperand2().hasValue()
+                        && calculator.getOperator().equals("/")) {
+                    return;
+                }
+
                 displayField.setText(text + button.getText());
                 calculator.addToOperand(button.getText());
             }

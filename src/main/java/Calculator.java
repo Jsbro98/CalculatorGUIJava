@@ -61,6 +61,10 @@ public class Calculator {
         return this.operand2;
     }
 
+    public String getOperator() {
+        return this.operation.getValue();
+    }
+
     //master eval method
     public String eval() {
         String result = "";
