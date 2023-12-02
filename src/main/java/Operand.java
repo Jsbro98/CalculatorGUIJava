@@ -6,10 +6,6 @@ public class Operand extends CalculatorPart {
         this.value = new StringBuilder();
     }
 
-    public void addToValue(char number) {
-        this.value.append(number);
-    }
-
     public void addToValue(String number) {
         this.value.append(number);
     }
