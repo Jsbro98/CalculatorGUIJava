@@ -3,13 +3,18 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class CalculatorGUIJava {
 
+    public Calculator calculator;
+
     public CalculatorGUIJava() {
+        // create calculator for logic
+        this.calculator = new Calculator();
+
+
+
         // button constants
         Dimension BUTTON_DIMENSION = new Dimension(75, 50);
         Font BUTTON_FONT = new Font("Courier New", Font.BOLD, 24);
@@ -51,6 +56,17 @@ public class CalculatorGUIJava {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 displayField.setText("");
+                calculator.resetOperand(2);
+            }
+        });
+
+        equalsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String result = calculator.eval();
+                clearButton.doClick();
+                displayField.setText(result);
+                calculator.addToOperand(result);
             }
         });
     }
@@ -80,8 +96,26 @@ public class CalculatorGUIJava {
 
     public void attachOperatorListener(JButton button) {
         button.addActionListener(e -> {
+
+            if (calculator.getOperand2().hasValue()) {
+                String result = calculator.eval();
+                clearButton.doClick();
+                calculator.addToOperand(result);
+                calculator.setOperation(button.getText());
+                displayField.setText(result + " " + button.getText() + " ");
+                return;
+            }
+
             String text = displayField.getText();
             displayField.setText(text + " " + button.getText() + " ");
+
+            if (calculator.getOperand2().hasValue()) {
+                String result = calculator.eval();
+                clearButton.doClick();
+                calculator.addToOperand(result);
+                calculator.setOperation(button.getText());
+            }
+            calculator.setOperation(button.getText());
         });
     }
 
@@ -90,6 +124,7 @@ public class CalculatorGUIJava {
             if (button != clearButton && button != equalsButton) {
                 String text = displayField.getText();
                 displayField.setText(text + button.getText());
+                calculator.addToOperand(button.getText());
             }
         });
     }

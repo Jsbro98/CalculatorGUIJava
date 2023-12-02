@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a3d7475-1e40-4659-b445-6860ebc9585c" name="Changes" comment="added action listener to operation panel as well. Merged listeners to one block of code.">
+    <list default="true" id="3a3d7475-1e40-4659-b445-6860ebc9585c" name="Changes" comment="added more helper methods. made the code more DRY">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Calculator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CalculatorPart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Operand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Operation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CalculatorGUIJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CalculatorGUIJava.java" afterDir="false" />
     </list>
@@ -115,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701199625404</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added more helper methods. made the code more DRY">
+      <option name="closed" value="true" />
+      <created>1701247197624</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701247197624</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +137,20 @@
     <MESSAGE value="changed constant names." />
     <MESSAGE value="added listeners to keypad buttons to change displayField. added a clear button" />
     <MESSAGE value="added action listener to operation panel as well. Merged listeners to one block of code." />
-    <option name="LAST_COMMIT_MESSAGE" value="added action listener to operation panel as well. Merged listeners to one block of code." />
+    <MESSAGE value="added more helper methods. made the code more DRY" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more helper methods. made the code more DRY" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint suspend="NONE" type="java-exception">
+          <properties class="java.lang.NumberFormatException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="java-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
