@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a3d7475-1e40-4659-b445-6860ebc9585c" name="Changes" comment="handling divide by zero">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Operand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Operand.java" afterDir="false" />
+    <list default="true" id="3a3d7475-1e40-4659-b445-6860ebc9585c" name="Changes" comment="removed unnecessary method">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CalculatorGUIJava.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CalculatorGUIJava.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701496002218</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="removed unnecessary method">
+      <option name="closed" value="true" />
+      <created>1701496098109</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701496098109</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -169,7 +179,8 @@
     <MESSAGE value="added calculator class for handling operations" />
     <MESSAGE value="added logic to GUI" />
     <MESSAGE value="handling divide by zero" />
-    <option name="LAST_COMMIT_MESSAGE" value="handling divide by zero" />
+    <MESSAGE value="removed unnecessary method" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

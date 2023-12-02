@@ -9,20 +9,10 @@ public class Calculator {
         this.operand2 = new Operand();
     }
 
-    public void resetOperand(int numberOfResets) {
-
-        if (numberOfResets == 1) {
-
-            this.operand1.resetToDefault();
-            this.operand1.addToValue(this.operand2.getValue());
-            this.operand2.resetToDefault();
-
-        } else if (numberOfResets == 2) {
-
-            this.operand1.resetToDefault();
-            this.operand2.resetToDefault();
-            this.operation.resetToDefault();
-        }
+    public void resetOperands() {
+        this.operand1.resetToDefault();
+        this.operand2.resetToDefault();
+        this.operation.resetToDefault();
     }
 
     public void addToOperand(String value) {

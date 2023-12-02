@@ -56,7 +56,7 @@ public class CalculatorGUIJava {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 displayField.setText("");
-                calculator.resetOperand(2);
+                calculator.resetOperands();
             }
         });
 
